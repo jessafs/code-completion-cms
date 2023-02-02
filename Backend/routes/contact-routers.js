@@ -1,17 +1,19 @@
-const express = require("express")
-// import contact-controllers
+// require express and create routes for adding contact, getting all contact, updating contact and deleting contact from contact controller folder
 
-const contactController = require('../controllers/contact-controllers');
+const express = require("express");
+const router = express.Router();
+const contactController = require("../controllers/contact-controllers");
 
-// create contact-router
-const contactRouter = express.Router();
+// Add Contact Route
+router.post("/addContact", contactController.addContact);
 
-// create contact-routes
-contactRouter.post('/addContact', contactController.addContact);
-contactRouter.get('/getAllContact', contactController.getAllContact);
-// contactRouter.get('/:id', contactController.show);
-// contactRouter.put('/:id', contactController.update);
-// contactRouter.delete('/:id', contactController.destroy);
+// Get All Contacts Route
+router.get("/getAllContacts", contactController.getAllContacts);
 
-// export contact-router
-module.exports = contactRouter;
+// Update Contact Route
+router.put("/updateContact/:id", contactController.updateContact);
+
+// Delete Contact Route
+router.delete("/deleteContact/:id", contactController.deleteContact);
+
+module.exports = router;
