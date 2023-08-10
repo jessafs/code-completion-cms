@@ -19,3 +19,5 @@ const connectDB = async () => {
 };
 
 module.exports = {connectDB};
+
+// Write a constant function that connect mongoose to a database named connectDB

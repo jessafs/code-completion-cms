@@ -1,5 +1,5 @@
 const contactServices = require("../services/contact-services");
-// Create a asynchronous function named addContact with a req and res parameter
+// Create an asynchronous const function named addContact with a req and res parameter
 
 exports.addContact = async (req, res) => {
   try {
@@ -16,7 +16,7 @@ exports.addContact = async (req, res) => {
     return res.json({ err: error });
   }
 };
-
+//Create a asynchronous const function named getContact with a req and res parameter
 exports.getAllContacts = async (req, res) => {
   try {
     const getContact = await contactServices.getAllContacts();
@@ -26,7 +26,7 @@ exports.getAllContacts = async (req, res) => {
   }
 };
 
-// Create a asynchronous function named updateContact with a req and res parameter
+// Create a asynchronous const function named updateContact with a req and res parameter
 exports.updateContact = async (req, res) => {
   try {
     const contact = await contactServices.updateContact(req.params.id, req.body);
@@ -40,7 +40,7 @@ exports.updateContact = async (req, res) => {
   }
 };
 
-// Create a asynchronous function named deleteContact with a req and res parameter
+// Create a asynchronous const function named deleteContact with a req and res parameter
 exports.deleteContact = async (req, res) => {
   try {
     const contactId = req.params.id;
@@ -55,3 +55,5 @@ exports.deleteContact = async (req, res) => {
     res.status(500).send("Server Error");
   }
 };
+
+

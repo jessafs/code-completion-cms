@@ -1,40 +1,22 @@
+
+
+const express = require('express');
+const app = express();
+const routes = require("./routes/contact-routers");
 // require dotenv
-
-require("dotenv").config();
-
-// require express
-const express = require("express");
-
-// require body-parser
-const bodyParser = require("body-parser");
-
-// require cors
+const dotenv = require('dotenv');
+dotenv.config();
 const cors = require("cors");
 
-// require mongoose
+// set port from the env file
+const port = process.env.PORT || 4001;
+// require body-parser
+const bodyParser = require('body-parser');
 const db = require("./database/init");
 db.connectDB();
-// require routes
-const routes = require("./routes/contact-routers");
-
-// create express app
-const app = express();
-
-// set port
-const PORT = process.env.PORT || 4001;
-
-// set up middleware
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+app.use('/api', routes);
 
-// set up routes
-app.use("/api", routes);
-
-// set up mongoose
-// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/nytreact');
-
-// start server
-app.listen(PORT, () => {
-  console.log(`App listening on PORT ${PORT}`);
-});
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));

@@ -1,5 +1,4 @@
 // require express and create routes for adding contact, getting all contact, updating contact and deleting contact from contact controller folder
-
 const express = require("express");
 const router = express.Router();
 const contactController = require("../controllers/contact-controllers");
